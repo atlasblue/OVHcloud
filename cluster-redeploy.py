@@ -9,7 +9,7 @@ import ovh
 # You can generate new credentials with full access to your account on
 # the token creation page (https://api.ovh.com/createToken/index.cgi?GET=/*&PUT=/*&POST=/*&DELETE=/*)
 client = ovh.Client(
-	endpoint='ovh-xx',               # Endpoint of API OVH (List of available endpoints: https://github.com/ovh/python-ovh#2-configure-your-application)
+	endpoint='ovh-xx',     # Endpoint of API OVH (List of available endpoints: https://github.com/ovh/python-ovh#2-configure-your-application)
 	application_key='',    # Application Key
 	application_secret='', # Application Secret
 	consumer_key='',       # Consumer Key
