@@ -12,7 +12,7 @@ client = ovh.Client(
 )
 
 # Replace with your actual cluster service name
-service_name = "cluster-3517.nutanix.ovh.net"
+service_name = "cluster-xxxx.nutanix.ovh.net"
 
 # Fetch current cluster configuration
 try:
