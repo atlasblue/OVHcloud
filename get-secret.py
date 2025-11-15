@@ -11,30 +11,29 @@ client = ovh.Client(
 	consumer_key='',       # Consumer Key
 )
 
-# Numéro du cluster
-cluster_number = "3517"
-cluster_id = f"cluster-{cluster_number}.nutanix.ovh.net"
+# Replace with your actual cluster service name
+service_name = "cluster-xxxx.nutanix.ovh.net"
 
-# Étape 1 : Récupérer la liste des serveurs
+# Get list of servers
 try:
-    cluster_info = client.get(f"/nutanix/{cluster_id}")
+    cluster_info = client.get(f"/nutanix/{service_name}")
     nodes = cluster_info.get("targetSpec", {}).get("nodes", [])
 except Exception as e:
-    print(f"Erreur lors de la récupération du cluster : {e}")
+    print(f"Error to fetech servers configuration : {e}")
     nodes = []
 
-# Étape 2 : Pour chaque serveur, vérifier et récupérer le mot de passe
+# For each server check and get the password
 for node in nodes:
     server_name = node.get("server")
     if not server_name:
         continue
 
     try:
-        # Vérifie si un mot de passe est disponible
+        # Check if a password is available
         secrets = client.post(f"/dedicated/server/{server_name}/authenticationSecret")
         password_uuid = secrets[0].get("password") if secrets else None
         if password_uuid:
-            # Récupère le mot de passe via l'UUID
+            # Get the password using password uuid
             password_info = client.post("/secret/retrieve", id = password_uuid)
             print(password_uuid)
             print(f"🔐 Server: {server_name} | Password: {password_info.get('secret')}")
