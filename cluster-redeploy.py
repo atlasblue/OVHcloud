@@ -16,7 +16,7 @@ client = ovh.Client(
 )
 
 # Define the variables that configure your cluster redeployment
-service_name = "cluster-3517.nutanix.ovh.net" # The identifier of the Nutanix cluster
+service_name = "cluster-xxxx.nutanix.ovh.net" # The identifier of the Nutanix cluster
 erasure_coding = False # A boolean flag whether erasure coding is enabled.
 infra_vlan_number = 0 # The infrastructure VLAN number to use 
 nodes = [ 
